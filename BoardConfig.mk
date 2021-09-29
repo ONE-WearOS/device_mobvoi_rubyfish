@@ -43,6 +43,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=rover user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78B0000 vmalloc=300M firmware_class.path=/vendor/firmware_mnt/image androidboot.usbconfigfs=true loop.max_part=7 buildvariant=user
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/zImage-dtb
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 BOARD_INCLUDE_RECOVERY_DTBO := true
@@ -70,8 +71,17 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
 # TWRP Configuration
-TW_THEME := portrait_hdpi
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_THEME := watch_mdpi
+RECOVERY_SDCARD_ON_DATA := true
+TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_EXTRA_LANGUAGES := true
-TW_SCREEN_BLANK_ON_BOOT := true
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_NTFS_3G := true
+TW_IGNORE_MISC_WIPE_DATA := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
+TW_SCREEN_BLANK_ON_BOOT := true
 TW_USE_TOOLBOX := true
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
+TW_HAS_EDL_MODE := true
