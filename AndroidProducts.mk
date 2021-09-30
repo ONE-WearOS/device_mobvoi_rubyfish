@@ -17,4 +17,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-     $(LOCAL_DIR)/omni_rover.mk
+     $(LOCAL_DIR)/omni_rubyfish.mk

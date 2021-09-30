@@ -16,5 +16,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo omni_rover-userdebug
-add_lunch_combo omni_rover-eng
+add_lunch_combo omni_rubyfish-userdebug
+add_lunch_combo omni_rubyfish-eng

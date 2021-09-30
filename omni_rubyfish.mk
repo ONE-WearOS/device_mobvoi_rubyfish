@@ -22,15 +22,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Inherit from rover device
-$(call inherit-product, device/mobvoi/rover/device.mk)
+# $(call inherit-product, device/mobvoi/rover/device.mk)
 
 # Inherit some common Omni stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
 # $(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := rover
-PRODUCT_NAME := omni_rover
+PRODUCT_DEVICE := rubyfish
+PRODUCT_NAME := omni_rubyfish
 PRODUCT_BRAND := Mobvoi
 PRODUCT_MODEL := TicWatch Pro 3
 PRODUCT_MANUFACTURER := mobvoi

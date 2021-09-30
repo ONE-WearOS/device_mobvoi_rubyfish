@@ -18,6 +18,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE), rover)
+ifeq ($(TARGET_DEVICE), rubyfish)
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 endif
