@@ -49,6 +49,10 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_COPY_OUT_VENDOR := vendor
 
+# System-as-root
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+
+
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=rubyfish msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1
 #BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=rubyfish user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0x78B0000 vmalloc=300M firmware_class.path=/vendor/firmware_mnt/image androidboot.usbconfigfs=true loop.max_part=7 buildvariant=user
@@ -78,6 +82,7 @@ PLATFORM_VERSION := 16.1.0
 
 # TWRP Configuration
 BOARD_HAS_NO_REAL_SDCARD := true
+TW_ROUND_SCREEN := true
 TW_THEME := watch_mdpi
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
