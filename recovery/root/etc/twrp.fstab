@@ -1,11 +1,21 @@
-# mount point       fstype    device                                                                flags
-/system             ext4      /dev/block/bootdevice/by-name/system                                  flags=display="System";backup=1;
-/system_image       emmc      /dev/block/bootdevice/by-name/system                                  flags=display="System image";backup=1;flashimg=1;
-/cache              ext4      /dev/block/bootdevice/by-name/cache                                   flags=display="Cache";
-/vendor             ext4      /dev/block/bootdevice/by-name/vendor                                  flags=display="Vendor";backup=1;
-/vendor_image       emmc      /dev/block/bootdevice/by-name/vendor                                  flags=display="Vendor image";backup=1;flashimg=1;
-/data               f2fs      /dev/block/bootdevice/by-name/userdata                                flags=display="Data";
-/sdcard            vfat      /dev/block/mmcblk1p1                                                  flags=display="Sdcard1";
-/boot               emmc      /dev/block/bootdevice/by-name/boot                                    flags=display="Boot";backup=1;flashimg=1;
-/recovery           emmc      /dev/block/bootdevice/by-name/recovery                                flags=display="Recovery";backup=1;flashimg=1;
-/misc               emmc      /dev/block/bootdevice/by-name/misc                                    flags=display="Misc";backup=1;flashimg=1;
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+#TODO: Add 'check' as fs_mgr_flags with data partition.
+# Currently we dont have e2fsck compiled. So fs check would failed.
+
+#<src>                                      <mnt_point>      <type>  <mnt_flags and options>                     <fs_mgr_flags>
+/dev/block/by-name/system        /system_root                ext4    rw,barrier=1,discard                        wait
+/dev/block/by-name/vendor    /vendor           ext4    noatime,nosuid,nodev,barrier=1                                                               wait
+#/dev/block/by-name/userdata      /data            f2fs    noatime,nosuid,nodev,discard                latemount,wait,fileencryption=ice,quota,reservedsize=128M
+/dev/block/by-name/config        /frp             emmc    defaults                                    defaults
+/dev/block/by-name/misc          /misc            emmc    defaults                                    defaults
+/dev/block/by-name/cache         /cache           ext4    noatime,nosuid,nodev,barrier=1              wait
+/dev/block/by-name/modem         /vendor/firmware_mnt        vfat    rw,shortname=lower,uid=0,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait
+/dev/block/by-name/dsp           /vendor/dsp                 ext4    rw,nosuid,nodev,barrier=1                   wait
+/dev/block/by-name/persist       /persist        ext4    noatime,nosuid,nodev,barrier=1                   wait,notrim
+/dev/block/by-name/oem           /oem             ext4    rw,context=u:object_r:oemfs:s0,nosuid,nodev    wait
+/dev/block/zram0                            none             swap    defaults                                     zramsize=268435456,swapprio=32758
+#/dev/block/mmcblk1p1                       /sdcard         vfat    nosuid,nodev                                                    wait
+/dev/block/by-name/userdata     /data           f2fs    noatime,nosuid,nodev,discard					   wait,check,encryptable=footer,fileencryption=ice:aes-256-cts
