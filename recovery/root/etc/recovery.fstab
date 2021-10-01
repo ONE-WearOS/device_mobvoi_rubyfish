@@ -1,18 +1,18 @@
-/system_root    ext4    /dev/block/by-name/system    flags=display="System";backup=1
-/system_image   emmc    /dev/block/by-name/system    flags=display="System Image";backup=1
-/cache          ext4    /dev/block/by-name/cache     flags=display="Cache";backup=1
-/data           f2fs    /dev/block/by-name/userdata  flags=encryptable=footer;backup=1
-/boot           emmc    /dev/block/by-name/boot      flags=display="Boot";backup=1
-/recovery       emmc    /dev/block/by-name/recovery  flags=display="Recovery";backup=1
-/firmware_mnt   vfat    /dev/block/by-name/modem     flags=display="Modem";backup=1
-/persistent     emmc    /dev/block/by-name/config    flags=display="FRP";backup=1
-/misc           emmc    /dev/block/by-name/misc      flags=display="Misc";backup=1
-/vendor         ext4    /dev/block/by-name/vendor    flags=display="Vendor";backup=1
-/vendor_image   emmc    /dev/block/by-name/vendor    flags=display="Vendor Image";backup=1
-/oem            emmc    /dev/block/by-name/oem       flags=display="oem";backup=1
-/aboot          emmc    /dev/block/by-name/aboot     flags=display="Fastboot";backup=1
-/cmnlib         emmc    /dev/block/by-name/cmnlib    flags=display="cmnlib";backup=1
-/keymaster      emmc    /dev/block/by-name/keymaster flags=display="keymaster";backup=1
-/rpm            emmc    /dev/block/by-name/rpm       flags=display="rpm";backup=1
-/sbl1           emmc    /dev/block/by-name/sbl1      flags=display="sbl1";backup=1
-/tz             emmc    /dev/block/by-name/tz        flags=display="tz";backup=1
+# mount point  fstype device                             device2              flags
+/boot          emmc   /dev/block/by-name/boot
+/cache         ext4   /dev/block/by-name/cache
+/recovery      emmc   /dev/block/by-name/recovery                     flags=backup=1
+/system_root        ext4   /dev/block/by-name/system
+/vendor        ext4   /dev/block/by-name/vendor                       flags=backup=1;display="Vendor"
+
+/system_image  emmc   /dev/block/by-name/system
+/vendor_image  emmc   /dev/block/by-name/vendor
+
+/data          ext4   /dev/block/by-name/userdata                     flags=encryptable=footer;fileencryption=ice:aes-256-cts
+/vendor/firmware_mnt      vfat   /dev/block/by-name/modem             flags=display="Firmware";mounttodecrypt
+/oem          ext4   /dev/block/by-name/oem                         flags=display="OEM"
+/misc          emmc   /dev/block/by-name/misc
+/modem         emmc   /dev/block/by-name/modem                        flags=backup=1;display="Modem"
+/bluetooth     emmc   /dev/block/by-name/bluetooth                    flags=backup=1;subpartitionof=/modem
+/frp           emmc   /dev/block/by-name/config                          flags=backup=1;subpartitionof=/modem
+/persist       ext4   /dev/block/by-name/persist                      flags=display="Persist"

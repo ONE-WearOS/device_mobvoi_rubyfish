@@ -8,14 +8,14 @@
 #<src>                                      <mnt_point>      <type>  <mnt_flags and options>                     <fs_mgr_flags>
 /dev/block/by-name/system        /system_root                ext4    rw,barrier=1,discard                        wait
 /dev/block/by-name/vendor    /vendor           ext4    noatime,nosuid,nodev,barrier=1                                                               wait
-#/dev/block/by-name/userdata      /data            f2fs    noatime,nosuid,nodev,discard                latemount,wait,fileencryption=ice,quota,reservedsize=128M
 /dev/block/by-name/config        /frp             emmc    defaults                                    defaults
 /dev/block/by-name/misc          /misc            emmc    defaults                                    defaults
+/dev/block/by-name/boot          /boot            emmc    defaults                                    defaults
+/dev/block/by-name/recovery          /recovery            emmc    defaults                                    defaults
 /dev/block/by-name/cache         /cache           ext4    noatime,nosuid,nodev,barrier=1              wait
 /dev/block/by-name/modem         /vendor/firmware_mnt        vfat    rw,shortname=lower,uid=0,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait
 /dev/block/by-name/dsp           /vendor/dsp                 ext4    rw,nosuid,nodev,barrier=1                   wait
 /dev/block/by-name/persist       /persist        ext4    noatime,nosuid,nodev,barrier=1                   wait,notrim
 /dev/block/by-name/oem           /oem             ext4    rw,context=u:object_r:oemfs:s0,nosuid,nodev    wait
 /dev/block/zram0                            none             swap    defaults                                     zramsize=268435456,swapprio=32758
-#/dev/block/mmcblk1p1                       /sdcard         vfat    nosuid,nodev                                                    wait
 /dev/block/by-name/userdata     /data           f2fs    noatime,nosuid,nodev,discard					   wait,check,encryptable=footer,fileencryption=ice:aes-256-cts
