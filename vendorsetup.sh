@@ -1,1 +1,1 @@
-add_lunch_combo omni_runyfish-eng
+add_lunch_combo omni_rubyfish-eng
